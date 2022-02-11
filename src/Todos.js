@@ -1,28 +1,39 @@
-
-const Todos = ({todos, deleteTodo,complete,uncomplete,setTodos}) => {
-  const fun=(id)=>{
+;const Todos = ({todos, deleteTodo,completed,setCompleted,uncomplete,setTodos}) => {
+  
+  const strikeText=(id)=>{
     const ele=document.getElementById(id);
     ele.classList.toggle("completed");
-    
-    // console.log(e);
-    // e.target.classList.toggle("completed");
-
   }
   
   const todoList = todos.length ? (
     todos.map(todo => {
       return (
         <div className="collection-item" onClick={()=>{
-            fun(todo.id)
+            strikeText(todo.id)
             if(!todo.isCompleted){
               let temp= todos;
-              temp[todo.id-1].isCompleted=true;
+              temp.forEach(t=>{
+                if(t.id==todo.id){
+                  t.isCompleted=true;
+                }
+
+              })
+              let newComp = [...completed,todo]
               setTodos(temp);
+              setCompleted(newComp)
+            
+              
             }
             else{
               let temp= todos;
-              temp[todo.id-1].isCompleted=false;
-              setTodos(temp)
+              temp.forEach(t=>{
+                if(t.id==todo.id){
+                  t.isCompleted=false;
+                }
+              })
+              let newComp = completed.filter(task=>{return task!==todo})
+              setTodos(temp);
+              setCompleted(newComp);
             }
           }
           } id={todo.id} key={todo.id}>

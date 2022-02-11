@@ -2,16 +2,19 @@ import Todos from "./Todos";
 import {useState} from 'react'
 import AddTodo from "./AddTodo";
 import CompleteTodo from "./CompletedTodo";
+import RemoveCompletedTask from "./RemoveTask";
 
 function App() {
   let [todos,setTodos]=useState([]);
+  let [completed,setCompleted]=useState([]);
+  let [final,setFinal]=useState([]);
   // const todos = [
   //   {id:1,content:'Go To Potions Class'},
   //   {id:2,content:'Buy New Robes'},
   //   {id:1,content:'Visit Hagrid'}
   // ]
   let [remtask,setRemtask]=useState(false);
-  let [completeTodos,setCompleteTodos]=useState([]);
+  // let [completeTodos,setCompleteTodos]=useState([]);
   const deleteTodo = (id) => {
     const newTodos = todos.filter(todo => {
       return todo.id !== id
@@ -34,15 +37,17 @@ function App() {
     <div className="App">
       
       <div style={{background:"#f7f7f7",width:"360px"}} className="main">
-      <h1>To-Do List <i class="fa fa-plus"></i></h1>
-        <AddTodo todos={todos} setTodos={setTodos} remtask={remtask} setRemtask={setRemtask} />
-        <Todos todos={todos} deleteTodo={deleteTodo} complete={complete} uncomplete={uncomplete} setTodos={setTodos} setCompleteTodos={setCompleteTodos}/>
+      <h1>To-Do List</h1>
+        <AddTodo todos={todos} setTodos={setTodos} />
+        <RemoveCompletedTask todos={todos} setTodos={setTodos} setRemtask={setRemtask}  setFinal={setFinal} completed={completed}/>
+        <Todos todos={todos} deleteTodo={deleteTodo} completed={completed} uncomplete={uncomplete} setTodos={setTodos} setCompleted={setCompleted}/>
 
       </div>
       <div  style={{width:"40px", opacity:"0"}} className="temp"></div>
       {remtask && <>
-        <div style={{background:"#f7f7f7",width:"200px"}} className="completed-task">
-        <CompleteTodo completeTodos={completeTodos}/>
+        <div style={{background:"#f7f7f7",width:"360px"}} className="completed-task">
+          <h1>Completed Tasks</h1>
+          <CompleteTodo final={final}/>
         </div>
       </>}
       

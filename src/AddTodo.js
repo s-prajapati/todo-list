@@ -1,5 +1,5 @@
 import {useState} from 'react';
-const AddTodo = ({todos,setTodos,remtask,setRemtask})=>{
+const AddTodo = ({todos,setTodos})=>{
     const [lengthError, setLengthError] = useState("");
     const handleKeyPress = (event) => {
         if(event.key === 'Enter' || event.key === 'NumpadEnter'){
@@ -12,8 +12,13 @@ const AddTodo = ({todos,setTodos,remtask,setRemtask})=>{
     }
     const addTodo = (content) => {
         if(content.length>=5){
-            const id = todos.length+1;
-            let newTodos = [...todos,{id:id,content:content,isCompleted:false}]
+            // let id;
+            // if(todos.length!=0){
+            //      id = todos[todos.length-1].id+1;
+            // }
+            // else id=1;
+            
+            let newTodos = [...todos,{id: Math.random(),content:content,isCompleted:false}]
             setTodos(newTodos);
             setContent('')
         }else{
@@ -22,16 +27,11 @@ const AddTodo = ({todos,setTodos,remtask,setRemtask})=>{
         
     }
     const [content,setContent]=useState('');
-    const move = ()=>{
-        let temp = todos.filter((todo)=>{return !todo.isCompleted});
-        setTodos(temp);
-        
-    }
+    
     return (
         <div className="add">
         <input type="text" placeholder="Add New Todo" value={content} onChange={(e)=>{
             if(e.target.value.length>=5){
-                console.log(e.target.value)
                 setLengthError('')}
                 setContent(e.target.value)}
                 } onKeyPress={handleKeyPress} />
@@ -41,10 +41,7 @@ const AddTodo = ({todos,setTodos,remtask,setRemtask})=>{
             </span>
             )}
             <button onClick={()=>addTodo(content)}>Submit</button>
-            <button onClick={()=>{
-                setRemtask(!remtask)
-                move();
-            }}>Remove Completed Task</button>
+            
         </div>
     )
 }
