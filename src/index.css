@@ -35,7 +35,7 @@ h1 {
 	/* background: #fff; */
 	height: 40px;
 	line-height: 40px;
-	color: #666;
+	color: Black;
 }
 
 .item:nth-child(2n){
@@ -78,14 +78,15 @@ input:focus{
 .App {
 	display: flex;
 	flex-direction: row;
-	width: 360px;
+	justify-content: center;
+	
 	margin: 100px auto;
 	/* background: #f7f7f7; */
-	box-shadow: 0 0 3px rgba(0,0,0, 0.1);
+	/* box-shadow: 0 0 3px rgba(0,0,0, 0.1); */
 }
 
 .completed {
-	color: black;
+	color: white;
 	background-color: crimson;
 	text-decoration: line-through;
 	font-size: 1.5rem;

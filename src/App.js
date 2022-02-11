@@ -13,25 +13,35 @@ function App() {
   let [remtask,setRemtask]=useState(false);
   let [completeTodos,setCompleteTodos]=useState([]);
   const deleteTodo = (id) => {
-    const compTask = [...completeTodos,todos[id-1]];
-    setCompleteTodos(compTask);
     const newTodos = todos.filter(todo => {
       return todo.id !== id
     });
     setTodos(newTodos)
   }
+  const complete =(id)=>{
+    // let tempTodos= todos;
+    // tempTodos[id-1].isCompleted=true;
+    // setTodos(tempTodos);
+    // const compTask = [...completeTodos,todos[id-1]];
+    // // setCompleteTodos(compTask);
+  }
+  const uncomplete = (id)=>{
+    // const revertcompTask = completeTodos.filter((todo)=>{return todo.id!=id});
+    // setCompleteTodos(revertcompTask);
+  }
 
   return (
     <div className="App">
-      <div style={{background:"#f7f7f7"}} className="main">
-
-        <Todos todos={todos} deleteTodo={deleteTodo} setTodos={setTodos} setCompleteTodos={setCompleteTodos}/>
+      
+      <div style={{background:"#f7f7f7",width:"360px"}} className="main">
+      <h1>To-Do List <i class="fa fa-plus"></i></h1>
         <AddTodo todos={todos} setTodos={setTodos} remtask={remtask} setRemtask={setRemtask} />
+        <Todos todos={todos} deleteTodo={deleteTodo} complete={complete} uncomplete={uncomplete} setTodos={setTodos} setCompleteTodos={setCompleteTodos}/>
 
       </div>
       <div  style={{width:"40px", opacity:"0"}} className="temp"></div>
       {remtask && <>
-        <div style={{background:"#f7f7f7"}} className="completed-task">
+        <div style={{background:"#f7f7f7",width:"200px"}} className="completed-task">
         <CompleteTodo completeTodos={completeTodos}/>
         </div>
       </>}

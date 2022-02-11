@@ -13,7 +13,7 @@ const AddTodo = ({todos,setTodos,remtask,setRemtask})=>{
     const addTodo = (content) => {
         if(content.length>=5){
             const id = todos.length+1;
-            let newTodos = [...todos,{id:id,content:content}]
+            let newTodos = [...todos,{id:id,content:content,isCompleted:false}]
             setTodos(newTodos);
             setContent('')
         }else{
@@ -21,7 +21,12 @@ const AddTodo = ({todos,setTodos,remtask,setRemtask})=>{
         }
         
     }
-    const [content,setContent]=useState('')
+    const [content,setContent]=useState('');
+    const move = ()=>{
+        let temp = todos.filter((todo)=>{return !todo.isCompleted});
+        setTodos(temp);
+        
+    }
     return (
         <div className="add">
         <input type="text" placeholder="Add New Todo" value={content} onChange={(e)=>{
@@ -36,7 +41,10 @@ const AddTodo = ({todos,setTodos,remtask,setRemtask})=>{
             </span>
             )}
             <button onClick={()=>addTodo(content)}>Submit</button>
-            <button onClick={()=>setRemtask(!remtask)}>Remove Completed Task</button>
+            <button onClick={()=>{
+                setRemtask(!remtask)
+                move();
+            }}>Remove Completed Task</button>
         </div>
     )
 }

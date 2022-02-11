@@ -4,9 +4,7 @@ const CompleteTodo =({completeTodos})=>{
           return (
             <div className="collection-item" key={todo.id}>
               {/* <span onClick={() => {deleteTodo(todo.id)}}>{todo.content}</span> */}
-              
                 <span className="item"><span className="trash"></span>{todo.content}</span>
-              
             </div>
           )
         })
