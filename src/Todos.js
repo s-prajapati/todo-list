@@ -1,19 +1,26 @@
 
 const Todos = ({todos, deleteTodo}) => {
+  const fun=(id)=>{
+    const ele=document.getElementById(id);
+    ele.classList.toggle("completed");
+    // console.log(e);
+    // e.target.classList.toggle("completed");
 
+  }
   const todoList = todos.length ? (
     todos.map(todo => {
       return (
-        <div className="collection-item" key={todo.id}>
+        <div className="collection-item" onClick={()=>fun(todo.id)} id={todo.id} key={todo.id}>
           {/* <span onClick={() => {deleteTodo(todo.id)}}>{todo.content}</span> */}
           
-            <span className="item"><span className="trash"></span>{todo.content}</span>
+            <span  className="item" ><span  onClick={()=>deleteTodo(todo.id)} className="trash"><img src="../public/delete.png" alt="" /></span>{todo.content}</span>
           
         </div>
       )
     })
   ) : (
     <p className="center">You have no todo's left, yay!</p>
+    
   );
 
   return (
