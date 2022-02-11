@@ -1,5 +1,5 @@
 import Todos from "./Todos";
-import {useState,useEffect} from 'react'
+import {useState} from 'react'
 import AddTodo from "./AddTodo";
 import CompleteTodo from "./CompletedTodo";
 import RemoveCompletedTask from "./RemoveTask";

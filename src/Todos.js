@@ -14,7 +14,7 @@
             if(!todo.isCompleted){
               let temp= todos;
               temp.forEach(t=>{
-                if(t.id==todo.id){
+                if(t.id===todo.id){
                   t.isCompleted=true;
                 }
 
@@ -28,7 +28,7 @@
             else{
               let temp= todos;
               temp.forEach(t=>{
-                if(t.id==todo.id){
+                if(t.id===todo.id){
                   t.isCompleted=false;
                 }
               })
