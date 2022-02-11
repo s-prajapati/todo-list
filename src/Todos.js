@@ -3,6 +3,7 @@
   const strikeText=(id)=>{
     const ele=document.getElementById(id);
     ele.classList.toggle("completed");
+
   }
   
   const todoList = todos.length ? (
@@ -39,7 +40,7 @@
           } id={todo.id} key={todo.id}>
           {/* <span onClick={() => {deleteTodo(todo.id)}}>{todo.content}</span> */}
           
-            <span  className="item" ><span  onClick={()=>deleteTodo(todo.id)} className="trash"><img style={{width:"20px",height:"20px"}} src="/delete.png" alt="" /></span>{todo.content}</span>
+            <span  className="item" >{todo.content}</span>
           
         </div>
       )

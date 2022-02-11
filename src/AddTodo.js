@@ -12,11 +12,6 @@ const AddTodo = ({todos,setTodos})=>{
     }
     const addTodo = (content) => {
         if(content.length>=5){
-            // let id;
-            // if(todos.length!=0){
-            //      id = todos[todos.length-1].id+1;
-            // }
-            // else id=1;
             
             let newTodos = [...todos,{id: Math.random(),content:content,isCompleted:false}]
             setTodos(newTodos);
@@ -40,7 +35,10 @@ const AddTodo = ({todos,setTodos})=>{
               {lengthError}
             </span>
             )}
-            <button onClick={()=>addTodo(content)}>Submit</button>
+            
+            <button onClick={()=>addTodo(content)}>
+                Add
+            </button>
             
         </div>
     )

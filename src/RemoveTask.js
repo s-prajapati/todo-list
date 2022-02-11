@@ -1,19 +1,22 @@
-const RemoveCompletedTask=({setRemtask,setTodos,todos,completed,setFinal})=>{
+const RemoveCompletedTask=({setRemtask,setTodos,todos,completed,setFinal,setCompleted})=>{
     const move = ()=>{
         let temp = todos.filter((todo)=>{return !todo.isCompleted});
         setTodos(temp);
         setFinal(completed)
+        setCompleted([])
     }
-    return (
+    
+    if(completed.length>0 && todos.length) return (
       
     <div className="remove-completed-task">
-        {completed.length>0 && <button onClick={()=>{
+         <button onClick={()=>{
             setRemtask(true)
             move();
-        }}>Remove Completed Task</button>} 
+        }}>Remove Completed Task</button> 
     </div>
     
     )
+    else return (<div></div>)
 }
 
 export default RemoveCompletedTask;
