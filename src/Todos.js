@@ -46,7 +46,7 @@
       )
     })
   ) : (
-    <p className="center">You have no todo's left, yay!</p>
+    <p style={{marginLeft:"80px"}}>You have no todo's left, yay!</p>
     
   );
 

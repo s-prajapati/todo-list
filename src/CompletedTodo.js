@@ -11,7 +11,7 @@ const CompleteTodo =({final})=>{
           )
         })
       ) : (
-        <p className="center">You have no todo's left, yay!</p>
+        <p className="center"></p>
       );
     
       return (
