@@ -3,7 +3,7 @@ const RemoveCompletedTask=({setRemtask,setTodos,todos,completed,setFinal,setComp
         let temp = todos.filter((todo)=>{return !todo.isCompleted});
         setTodos(temp);
         setFinal(completed)
-        setCompleted([])
+        // setCompleted([])
     }
     
     if(completed.length>0 && todos.length) return (
