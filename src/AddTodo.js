@@ -15,6 +15,7 @@ const AddTodo = ({todos,setTodos})=>{
             
             let newTodos = [...todos,{id: Math.random(),content:content,isCompleted:false}]
             setTodos(newTodos);
+            localStorage.setItem('todos',JSON.stringify(newTodos));
             setContent('')
         }else{
             setLengthError('Todo task length must be greater than or equal to 5');
@@ -25,16 +26,19 @@ const AddTodo = ({todos,setTodos})=>{
     
     return (
         <div className="add">
-        <input type="text" placeholder="Add New Todo" value={content} onChange={(e)=>{
-            if(e.target.value.length>=5){
-                setLengthError('')}
-                setContent(e.target.value)}
-                } onKeyPress={handleKeyPress} />
-            {lengthError.length > 0 && (
-            <span style={{color: "red",fontSize: "12px",marginLeft: "10px",}}>
-              {lengthError}
-            </span>
-            )}
+        <div className="input">
+            <input type="text" placeholder="Add New Todo" value={content} onChange={(e)=>{
+                if(e.target.value.length>=5){
+                    setLengthError('')}
+                    setContent(e.target.value)}
+                    } onKeyPress={handleKeyPress} />
+                {lengthError.length > 0 && (
+                <span style={{color: "red",fontSize: "12px",marginLeft: "10px",}}>
+                {lengthError}
+                </span>
+                )}
+        </div>
+        
             
             <button onClick={()=>addTodo(content)}>
                 Add

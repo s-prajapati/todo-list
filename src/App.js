@@ -15,14 +15,24 @@ function App() {
 
 
 
-  useEffect(() => {
-    console.log(completed+'\n-------------\n'+final)
-  })
+  const handleClick = ()=>{
+    setTodos([]);
+    setCompleted([]);
+    setFinal([]);
+    setRemtask(false);
+  }
   
+  useEffect(()=>{
+    if(localStorage.getItem('todos')){
+      setTodos(JSON.parse(localStorage.getItem('todos')))
+    }
+  },[])
 
   return (
     <div className="App">
-      
+      <div style={{position:"absolute",top:"1%",right:"3%",fontSize:"25px"}} onClick={handleClick} className="navbar">
+          <p>Reset</p>
+      </div>
       <div style={{background:"#f7f7f7",width:"360px"}} className="main">
 
         <h1 className="todo-heading">To-Do List</h1>

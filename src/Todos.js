@@ -21,6 +21,7 @@
               })
               let newComp = [...completed,todo]
               setTodos(temp);
+              
               setCompleted(newComp)
             
               
