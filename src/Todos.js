@@ -1,10 +1,10 @@
 ;const Todos = ({todos, deleteTodo,completed,setCompleted,uncomplete,setTodos}) => {
   
-  const strikeText=(id)=>{
-    const ele=document.getElementById(id);
-    ele.classList.toggle("completed");
+  // const strikeText=(id)=>{
+  //   const ele=document.getElementById(id);
+  //   ele.classList.toggle("completed");
 
-  }
+  // }
   
   const todoList = todos.length ? (
     todos.map(todo => {
