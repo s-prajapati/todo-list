@@ -1,9 +1,10 @@
-const RemoveCompletedTask=({setRemtask,setTodos,todos,completed,setFinal,setCompleted})=>{
+const RemoveCompletedTask=({setRemtask,setTodos,todos,completed,setFinal,setCompleted,final})=>{
     const move = ()=>{
         let temp = todos.filter((todo)=>{return !todo.isCompleted});
         setTodos(temp);
-        setFinal(completed)
-        // setCompleted([])
+
+        setFinal([...final,...completed])
+        setCompleted([])
     }
     
     if(completed.length>0 && todos.length) return (
