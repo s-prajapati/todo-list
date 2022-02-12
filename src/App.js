@@ -20,11 +20,18 @@ function App() {
     setCompleted([]);
     setFinal([]);
     setRemtask(false);
+    localStorage.clear();
   }
   
   useEffect(()=>{
     if(localStorage.getItem('todos')){
       setTodos(JSON.parse(localStorage.getItem('todos')))
+      let t = JSON.parse(localStorage.getItem('todos'));
+      setCompleted(t.filter(item=>{return item.isCompleted}));
+    }
+    if(localStorage.getItem('final')){
+      setFinal(JSON.parse(localStorage.getItem('final')))
+      setRemtask(true)
     }
   },[])
 

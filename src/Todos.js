@@ -9,8 +9,8 @@
   const todoList = todos.length ? (
     todos.map(todo => {
       return (
-        <div className="collection-item" onClick={()=>{
-            strikeText(todo.id)
+        <div className={todo.isCompleted ? "completed":"collection-item"} onClick={()=>{
+            // strikeText(todo.id)
             if(!todo.isCompleted){
               let temp= todos;
               temp.forEach(t=>{
@@ -21,9 +21,9 @@
               })
               let newComp = [...completed,todo]
               setTodos(temp);
-              
+              localStorage.setItem('todos',JSON.stringify(temp))
               setCompleted(newComp)
-            
+              
               
             }
             else{
@@ -35,6 +35,7 @@
               })
               let newComp = completed.filter(task=>{return task!==todo})
               setTodos(temp);
+              localStorage.setItem('todos',JSON.stringify(temp))
               setCompleted(newComp);
             }
           }

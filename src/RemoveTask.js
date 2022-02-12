@@ -2,12 +2,15 @@ const RemoveCompletedTask=({setRemtask,setTodos,todos,completed,setFinal,setComp
     const move = ()=>{
         let temp = todos.filter((todo)=>{return !todo.isCompleted});
         setTodos(temp);
+        localStorage.setItem('todos',JSON.stringify(temp));
 
         setFinal([...final,...completed])
+        localStorage.setItem('final',JSON.stringify([...final,...completed]));
+        
         setCompleted([])
     }
     
-    if(completed.length>0 && todos.length) return (
+    if(todos.filter(todo=>todo.isCompleted).length>0 && todos.length>0 ) return (
       
     <div className="remove-completed-task">
          <button onClick={()=>{
